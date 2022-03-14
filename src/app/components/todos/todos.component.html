@@ -1,4 +1,11 @@
-<app-todo></app-todo>
-<app-todo></app-todo>
-<app-todo></app-todo>
-<app-todo></app-todo>
+<app-input (addTodo)="addTodo($event)"></app-input>
+<div *ngIf="todos.length !== 0; else emptyTodos ">
+    <div class="container" *ngFor="let todo of todos; let i = index">
+        <app-todo [content]="todo" [id]="i" (removeTodo)="deleteTodo(i)" ></app-todo>
+    </div>
+</div>
+<ng-template #emptyTodos>
+    <div class="empty-todos">
+        <h2>You don't have any todos</h2>
+    </div>
+</ng-template>

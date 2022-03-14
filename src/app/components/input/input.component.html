@@ -1,6 +1,9 @@
   <div class="input-container">
-    <input (keyup)="handleInput($event)" type="text">
-    <button >
-      <span class="material-icons">add</span>
-    </button>
+    <input (keyup)="handleInput($event)" maxlength="35" type="text" placeholder="Write some todo">
+    <div class="add-button">
+      <button (click)="handleClick()">
+        <span class="material-icons">add</span>
+      </button>
+    </div>
+
   </div>

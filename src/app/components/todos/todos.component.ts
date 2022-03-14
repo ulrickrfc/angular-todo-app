@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-todos',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit {
+  @Output() deleteTodoItem: EventEmitter<any> = new EventEmitter()
 
+  todosContent = 'Este é um todo'
   todos:Array<String>=[]
   constructor() { }
 
@@ -14,6 +16,12 @@ export class TodosComponent implements OnInit {
   }
 
   addTodo(todo:string){
-    this.todos.push(todo)
+    if(todo !==""){
+      this.todos.push(todo)
+    }
+  }
+
+  deleteTodo(index:number){
+    this.todos.splice(index,1)
   }
 }

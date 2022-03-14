@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit {
+@Output() addTodo: EventEmitter<any> = new EventEmitter()
 
   input = ""
 
@@ -18,8 +19,8 @@ export class InputComponent implements OnInit {
     this.input = e.target.value
   }
 
-  addTodo(){
-    
+  handleClick(){
+    this.addTodo.emit(this.input)
   }
 
 }
